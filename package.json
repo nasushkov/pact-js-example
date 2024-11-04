@@ -8,12 +8,13 @@
     "start:kafka": "docker compose -f ./events/kafka-cluster.yml up -d",
     "start:redpanda": "docker compose -f ./events/redpanda-cluster.yml up -d",
     "test:provider": "jest provider/provider-contract.spec.js --testTimeout=20000",
-    "test:web:consumer": "jest consumer-web/consumer-contract.spec.js",
+    "test:web:consumer": "rimraf ./pacts && jest consumer-web/consumer-contract.spec.js",
     "test:event:consumer": "jest ./events/consumer-event/src/movies/movie.handler.pact.test.js",
     "test:event:producer": "jest --testTimeout 30000 ./events/event-producer/src/movie.event.pact.test.js",
     "produce:kafka:message": "node events/event-producer/index.js",
     "consume:kafka:message": "node events/consumer-event/server.js",
-    "publish:pact": "node publish-pact.js"
+    "publish:pact": "node publish-pact.js",
+    "record:consumer:deployment": "node record-consumer-deployment.js"
   },
   "author": "",
   "license": "ISC",
@@ -23,6 +24,7 @@
     "express": "4.18.2",
     "joi": "17.10.2",
     "kafkajs": "^2.2.4",
+    "rimraf": "^6.0.1",
     "shelljs": "^0.8.5"
   },
   "devDependencies": {
@@ -30,5 +32,6 @@
     "axios": "1.5.1",
     "cross-env": "^7.0.3",
     "jest": "29.7.0"
-  }
+  },
+  "packageManager": "pnpm@9.10.0+sha512.73a29afa36a0d092ece5271de5177ecbf8318d454ecd701343131b8ebc0c1a91c487da46ab77c8e596d6acf1461e3594ced4becedf8921b074fbd8653ed7051c"
 }

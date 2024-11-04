@@ -1,3 +1,4 @@
+require('dotenv').config();
 const { Verifier } = require("@pact-foundation/pact");
 const { importData, server, movies } = require("./provider");
 
@@ -14,9 +15,22 @@ const options = {
   pactBrokerToken: process.env.PACT_BROKER_TOKEN,
   providerVersion: "1.0.0",
   publishVerificationResult: true,
-  consumerVersionTags: ["main"],
+  consumerVersionSelectors: [
+    {
+      deployed: true
+    },
+    {
+      environment: "production"
+    }
+  ],
+  // consumerVersionSelectors: [
+  //   {
+  //     branch: "feat1"
+  //   }
+  // ],
+  // consumerVersionTags: ["main"],
   stateHandlers: {
-    "Has a movie with specific ID": (parameters) => {
+    "Has a movie with particular ID": (parameters) => {
       movies.getFirstMovie().id = parameters.id;
       return Promise.resolve({
         description: `Movie with ID ${parameters.id} added!`,

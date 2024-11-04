@@ -77,10 +77,10 @@
       }
     },
     {
-      "description": "a request to a specific movie",
+      "description": "a request to a particular movie",
       "providerStates": [
         {
-          "name": "Has a movie with specific ID",
+          "name": "Has a movie with particular ID",
           "params": {
             "id": 100
           }

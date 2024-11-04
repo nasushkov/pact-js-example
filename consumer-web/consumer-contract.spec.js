@@ -42,8 +42,8 @@ describe("Movies API", () => {
       EXPECTED_BODY.id = testId;
 
       provider
-        .given("Has a movie with specific ID", { id: testId })
-        .uponReceiving("a request to a specific movie")
+        .given("Has a movie with particular ID", { id: testId })
+        .uponReceiving("a request to a particular movie")
         .withRequest({
           method: "GET",
           path: `/movie/${testId}`,
