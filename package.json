@@ -14,7 +14,9 @@
     "produce:kafka:message": "node events/event-producer/index.js",
     "consume:kafka:message": "node events/consumer-event/server.js",
     "publish:pact": "node publish-pact.js",
-    "record:consumer:deployment": "node record-consumer-deployment.js"
+    "record:deployment:consumer": "node record-deployment.consumer.js",
+    "record:deployment:provider": "node record-deployment.provider.js",
+    "can:i:deploy:consumer": "node can-i-deploy.consumer.js"
   },
   "author": "",
   "license": "ISC",
