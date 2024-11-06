@@ -18,7 +18,8 @@ const importData = () => {
 };
 
 server.get('/movies', (req, res) => {
-  res.send(movies.getMovies());
+  res.send([]);
+  // res.send(movies.getMovies());
 });
 
 server.get('/movie/:id', (req, res) => {
